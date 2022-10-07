@@ -107,25 +107,17 @@ export default class LandingPages extends Vue {
 
     async landingPageAdded() {
         await this.fetchOneCategory('');
-        console.log(this.obj)
     }
 
     async ObtenerCategoria(nombre: string) {
         if (nombre === 'Todos') {
             await this.fetchOneCategory('');
-            this.landingOnepages = this.landingpages
         } else if (nombre === 'Productos') {
             await this.fetchOneCategory('Productos');
-            this.obj = this.landingOnepages
-            console.log(this.obj);
         } else if (nombre === 'Recetas') {
             await this.fetchOneCategory('Recetas');
-            this.obj = this.landingOnepages
-            console.log(this.obj);
         } else if (nombre === 'Consejos') {
             await this.fetchOneCategory('Consejos');
-            this.obj = this.landingOnepages
-            console.log(this.obj);
         }
     }
 
