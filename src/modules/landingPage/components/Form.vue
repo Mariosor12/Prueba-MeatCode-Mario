@@ -14,19 +14,19 @@
             </div>
             <div class="row" align="center">
                 <div class="col-md-5" align="center">
-                    <h6>Nombre</h6>
+                    <p class="input">Nombre</p>
                     <input v-model="body.firstname" type="text" />
                 </div>
                 <div class="col-md-5">
-                    <h6>Apellido</h6>
+                    <p class="input">Apellido</p>
                     <input v-model="body.lastname" type="text" />
                 </div>
                 <div class="col-md-5">
-                    <h6 class="mail">Mail</h6>
+                    <p class="input">Mail</p>
                     <input v-model="body.email" type="text" />
                 </div>
                 <div class="col-md-5">
-                    <h6>Teléfono</h6>
+                    <p class="input">Teléfono</p>
                     <input v-model="body.phone" type="text" />
                 </div>
                 <div class="pt-5 col-md-14">
@@ -76,7 +76,7 @@ img.bodyForm {
     margin-top: -30px;
     opacity: 0.3 !important;
 }
-h6 {
+h6.input {
     margin-right: 120px;
     margin-top: 20px;
     font-family: 'Open Sans';
@@ -99,10 +99,17 @@ button.btn.btn-primary.rounded-pill{
     background-color: #d8ad3d;
     border-color: #d8ad3d;
 }
+button.btn.btn-primary.rounded-pill:hover{
+    background-color: #009cd9;
+    border-color: #009cd9;
+}
 h1{
     font-family: 'Caveat', cursive;
 }
 div.col-md-5{
     margin-top: 15px;
+}
+p.input{
+    margin-right: 160px;
 }
 </style>

@@ -4,9 +4,9 @@
             <img src = "../assets/hero.png" class="image"/>
             <div class="pt-3 px-5 view__header d-flex flex-column justify-items-start logo">
                 <div align="right">
-                    <img src = "@/icons/facebook.svg" class= "facebook">
-                    <img src = "@/icons/instagram.svg" class= "instagram">
-                    <img src = "@/icons/youtube.svg" class= "youtube">
+                        <img src = "@/icons/facebook.svg" class= "facebook">
+                        <img src = "@/icons/instagram.svg" class= "instagram">
+                        <img src = "@/icons/youtube.svg" class= "youtube">
                 </div>
                 <b-col cols="2">
                     <b-row >
@@ -62,15 +62,30 @@
     }
     img.facebook{
         width: 13px !important;
-        margin-right: 5px;
+        margin-left: 5px;
+        position:relative;
+        width: 25px !important;
+        height: 30px;
+        border-radius: 50%;
+        border:2px solid #009cd9 !important;
     }
     img.instagram{
         width: 20px !important;
-        margin-right: 5px;
+        margin-left: 15px;
+        position:relative;
+        width: 25px !important;
+        height: 30px;
+        border-radius: 50%;
+        border:2px solid #b72c2c !important;
     }
     img.youtube{
         width: 20px !important;
-        margin-right: 5px;
+        margin-left: 15px;
+        position:relative;
+        width: 25px !important;
+        height: 30px;
+        border-radius: 50%;
+        border:2px solid #d8ad3d !important;
     }
     img.brush{
         margin-right: 500px;
