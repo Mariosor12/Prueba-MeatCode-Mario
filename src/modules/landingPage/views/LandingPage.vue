@@ -10,63 +10,88 @@
                 <div
                     class="pt-5 px-5 view__header d-flex flex-column justify-items-start"
                 >
-                    <div align="center">
-                        <h1 class="body">Nuestros Artículos</h1>
-                        <div align="center">
-                            <img
-                                class="body"
-                                src="../../../assets/BRUSH-3 2.png"
-                                width="400"
-                                height="80"
-                            />
-                        </div>
-                    </div>
-                    <div class="wrapper">
-                        <b-row>
-                            <ul style="max-width: 5rem">
-                                <b-link
-                                    @click="ObtenerCategoria('Todos')"
-                                    id="todos"
-                                    ><h6>Todos</h6></b-link
-                                >
-                                <b-link
-                                    @click="ObtenerCategoria('Productos')"
-                                    id="productos"
-                                    ><h6>Productos</h6></b-link
-                                >
-                                <b-link
-                                    @click="ObtenerCategoria('Recetas')"
-                                    id="recetas"
-                                    ><h6>Recetas</h6></b-link
-                                >
-                                <b-link
-                                    @click="ObtenerCategoria('Consejos')"
-                                    id="consejos"
-                                    ><h6>Consejos</h6></b-link
-                                >
-                            </ul>
-                            <b-card
-                                v-for="landing in filteredd"
-                                :title="landing.title"
-                                :img-src="landing.image"
-                                :img-alt="landing.title"
-                                img-top
-                                tag="article"
-                                :value="landingpages"
-                                style="max-width: 20rem; margin-left: 20px"
-                                class="mb-2"
+                    <div
+                        class="pt-5 view__header d-flex flex-column justify-items-start"
+                    >
+                        <div
+                            class="pt-5 view__header d-flex flex-column justify-items-start"
+                        >
+                            <div
+                                class="pt-5 view__header d-flex flex-column justify-items-start"
                             >
-                                <b-card-text>
-                                    {{ landing.content }}
-                                </b-card-text>
-                                <a
-                                    id="link"
-                                    v-bind:href="landing.url"
-                                    class="stretched-link"
-                                    >Ver Más</a
-                                >
-                            </b-card>
-                        </b-row>
+                                <div align="center">
+                                    <h1 class="body">Nuestros Artículos</h1>
+                                    <div align="center">
+                                        <img
+                                            class="body"
+                                            src="../../../assets/BRUSH-3 2.png"
+                                            width="400"
+                                            height="80"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="wrapper">
+                                    <b-row>
+                                        <ul style="max-width: 5rem">
+                                            <b-link
+                                                @click="
+                                                    ObtenerCategoria('Todos')
+                                                "
+                                                id="todos"
+                                                ><h6>Todos</h6></b-link
+                                            >
+                                            <b-link
+                                                @click="
+                                                    ObtenerCategoria(
+                                                        'Productos'
+                                                    )
+                                                "
+                                                id="productos"
+                                                ><h6>Productos</h6></b-link
+                                            >
+                                            <b-link
+                                                @click="
+                                                    ObtenerCategoria('Recetas')
+                                                "
+                                                id="recetas"
+                                                ><h6>Recetas</h6></b-link
+                                            >
+                                            <b-link
+                                                @click="
+                                                    ObtenerCategoria('Consejos')
+                                                "
+                                                id="consejos"
+                                                ><h6>Consejos</h6></b-link
+                                            >
+                                        </ul>
+                                        <b-card
+                                            v-for="landing in filteredd"
+                                            :title="landing.title"
+                                            :img-src="landing.image"
+                                            :img-alt="landing.title"
+                                            img-top
+                                            tag="article"
+                                            :value="landingpages"
+                                            style="
+                                                max-width: 19rem;
+                                                margin-left: 20px;
+                                            "
+                                            class="mb-2"
+                                        >
+                                            <b-card-text>
+                                                {{ landing.content }}
+                                            </b-card-text>
+                                            <a
+                                                id="link"
+                                                v-bind:href="landing.url"
+                                                class="stretched-link"
+                                                >Ver Más</a
+                                            >
+                                        </b-card>
+                                    </b-row>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <Form />
                 </div>
@@ -99,7 +124,7 @@ import Form from '../components/Form.vue';
 export default class LandingPages extends Vue {
     filtered: any[] = [];
     filters: any = {};
-    obj: any
+    obj: any;
 
     async mounted() {
         await this.landingPageAdded();
@@ -129,7 +154,7 @@ export default class LandingPages extends Vue {
                 )
             );
         });
-        return this.filtered
+        return this.filtered;
     }
 
     @landingpage.Action(LandingMethods.actions.FETCH_ALL_LANDINGPAGE)
@@ -178,15 +203,15 @@ ul {
     margin-right: 50px;
     margin-left: -130px;
 }
-h6{
+h6 {
     font-family: 'Open Sans';
     color: black;
 }
-h6:hover{
+h6:hover {
     font-family: 'Open Sans';
     color: #d8ad3d;
 }
-a{
+a {
     text-decoration: none !important;
 }
 </style>

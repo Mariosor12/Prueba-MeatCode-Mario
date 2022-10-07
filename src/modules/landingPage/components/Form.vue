@@ -14,19 +14,19 @@
             </div>
             <div class="row" align="center">
                 <div class="col-md-5" align="center">
-                    <p class="input">Nombre</p>
+                    <p class="input" required>Nombre</p>
                     <input v-model="body.firstname" type="text" />
                 </div>
                 <div class="col-md-5">
-                    <p class="input">Apellido</p>
+                    <p class="input" required>Apellido</p>
                     <input v-model="body.lastname" type="text" />
                 </div>
                 <div class="col-md-5">
-                    <p class="input">Mail</p>
+                    <p class="input" required>Mail</p>
                     <input v-model="body.email" type="text" />
                 </div>
                 <div class="col-md-5">
-                    <p class="input">Teléfono</p>
+                    <p class="input" required>Teléfono</p>
                     <input v-model="body.phone" type="text" />
                 </div>
                 <div class="pt-5 col-md-14">
@@ -61,7 +61,13 @@ export default class Forms extends Vue {
         phone: ''
     }
 
+    async mounted(){
+        this.body
+        console.log(this.body)
+    }
+
     async EnviarDatos(){
+        if(this.body.firstname == '' || this.body.lastname == '' || this.body.email == '')
         await this.fetchAddLanding(this.body)
     }
 
@@ -111,5 +117,6 @@ div.col-md-5{
 }
 p.input{
     margin-right: 160px;
+    font-weight: bold;
 }
 </style>
