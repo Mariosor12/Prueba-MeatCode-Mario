@@ -46,12 +46,13 @@
                                 >
                             </ul>
                             <b-card
-                                v-for="landing in landingpages"
+                                v-for="landing in filteredd"
                                 :title="landing.title"
                                 :img-src="landing.image"
                                 :img-alt="landing.title"
                                 img-top
                                 tag="article"
+                                :value="landingpages"
                                 style="max-width: 20rem; margin-left: 20px"
                                 class="mb-2"
                             >
@@ -105,40 +106,38 @@ export default class LandingPages extends Vue {
     }
 
     async landingPageAdded() {
-        await this.fetchLanding();
-        this.obj = this.landingpages
+        await this.fetchOneCategory('');
         console.log(this.obj)
     }
 
     async ObtenerCategoria(nombre: string) {
         if (nombre === 'Todos') {
-            await this.fetchLanding();
-            this.obj = this.landingOnepages
-            this.landingpages = this.obj
+            await this.fetchOneCategory('');
+            this.landingOnepages = this.landingpages
         } else if (nombre === 'Productos') {
             await this.fetchOneCategory('Productos');
             this.obj = this.landingOnepages
-            this.landingpages = this.obj
             console.log(this.obj);
         } else if (nombre === 'Recetas') {
             await this.fetchOneCategory('Recetas');
             this.obj = this.landingOnepages
-            this.landingpages = this.obj
             console.log(this.obj);
         } else if (nombre === 'Consejos') {
             await this.fetchOneCategory('Consejos');
             this.obj = this.landingOnepages
-            this.landingpages = this.obj
             console.log(this.obj);
         }
     }
 
-    @Watch('landingpages')
-    onPropertyChanged(value: any, oldValue: any) {
-    this.landingpages = value
-    this.obj = value
-    this.landingpages = value
-    console.log(this.landingpages)
+    get filteredd() {
+        this.filtered = this.landingOnepages.filter((item: any) => {
+            return Object.keys(this.filters).every((key) =>
+                String(item[key]?.toString().toLowerCase()).includes(
+                    this.filters[key]?.toLowerCase()
+                )
+            );
+        });
+        return this.filtered
     }
 
     @landingpage.Action(LandingMethods.actions.FETCH_ALL_LANDINGPAGE)
