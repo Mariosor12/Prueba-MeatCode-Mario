@@ -1,0 +1,18 @@
+export default {
+    mutations: {
+        SET_LANDINGPAGE: 'SET_LANDINGPAGE',
+        SET_CATEGORY: 'SET_CATEGORY',
+        SET_ONE_CATEGORY: 'SET_ONE_CATEGORY'
+    },
+    getters: {
+        GET_LANDINGPAGE: 'GET_LANDINGPAGE',
+        GET_CATEGORY: 'GET_CATEGORY',
+        GET_ONE_CATEGORY: 'GET_ONE_CATEGORY'
+    },
+    actions: {
+        FETCH_ALL_LANDINGPAGE: 'FETCH_ALL_LANDINGPAGE',
+        FETCH_CATEGORY: 'FETCH_CATEGORY',
+        FETCH_ONE_CATEGORY: 'FETCH_ONE_CATEGORY',
+        ADD_CONTACT: 'ADD_CONTACT'
+    },
+};
