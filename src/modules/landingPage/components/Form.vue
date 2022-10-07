@@ -1,9 +1,11 @@
 <template>
     <div align="center">
         <div
-            class="pt-5 px-5 view__header d-flex flex-column justify-items-start"
+            class="pt-5 px-5 view__header d-flex flex-column justify-items-start" align="center"
         >
-            <h1>Contáctanos</h1>
+        <div align="center">
+            <h2>Contáctanos</h2>
+        </div>
             <div align="center">
                 <img
                     class="bodyForm"
@@ -139,7 +141,7 @@ button.btn.btn-primary.rounded-pill:hover{
     background-color: #009cd9;
     border-color: #009cd9;
 }
-h1{
+h2{
     font-family: 'Caveat', cursive;
 }
 div.col-md-5{

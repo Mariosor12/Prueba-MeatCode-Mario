@@ -7,14 +7,29 @@
             >
                 <b-row>
                     <div align="right">
-                        <img src="@/icons/facebook.svg" width="20" height="20" class="facebook" />
-                        <img src="@/icons/instagram.svg" width="17" height="20" class="instagram" />
-                        <img src="@/icons/youtube.svg" width="20" height="20" class="youtube" />
+                        <img
+                            src="@/icons/facebook.svg"
+                            width="20"
+                            height="20"
+                            class="facebook"
+                        />
+                        <img
+                            src="@/icons/instagram.svg"
+                            width="17"
+                            height="20"
+                            class="instagram"
+                        />
+                        <img
+                            src="@/icons/youtube.svg"
+                            width="20"
+                            height="20"
+                            class="youtube"
+                        />
                     </div>
                 </b-row>
                 <b-col cols="2">
                     <b-row>
-                        <h3>Logo</h3>
+                        <spam>Logo</spam>
                     </b-row>
                 </b-col>
             </div>
@@ -23,7 +38,7 @@
             >
                 <b-col cols="2">
                     <b-row>
-                        <h2>El secreto de tu cocina</h2>
+                        <h1>El secreto de tu cocina</h1>
                     </b-row>
                     <img
                         class="brush"
@@ -48,12 +63,15 @@ export default class Layouts extends Vue {}
 </script>
 
 <style lang="scss">
-h3 {
-    margin-bottom: 60px !important;
-    font-family: 'Caveat', cursive;
+div.row {
+    spam {
+        margin-bottom: 10px !important;
+        font-family: 'Caveat', cursive;
+        font-size: 1.25rem;
+    }
 }
-h2 {
-    width: 205px !important;
+h1 {
+    width: 270px !important;
     position: absolute;
     font-family: 'Caveat', cursive;
 }
@@ -92,6 +110,6 @@ img.youtube {
 img.brush {
     margin-right: 500px;
     margin-left: -340px;
-    margin-top: 25px;
+    margin-top: 45px;
 }
 </style>
