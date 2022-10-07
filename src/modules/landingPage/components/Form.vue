@@ -83,10 +83,22 @@ export default class Forms extends Vue {
     }
 
     async EnviarDatos(){
-        if(this.body.firstname.length > 0 || this.body.lastname.length > 0 || this.body.email.length > 0 || this.body.phone,length > 0){
+        if (this.body.firstname.search(/[0-9]/i) > 0){
+            this.errorloginMessage = 'El nombre no debe tener números';
+        }
+        else if (this.body.lastname.search(/[0-9]/i) > 0){
+            this.errorloginMessage = 'El apellido no debe tener números';
+        }
+        else if (this.body.phone.search(/[a-z]/i) > 0){
+            this.errorloginMessage = 'El teléfono no debe tener caracteres';
+        }
+        else if(this.body.firstname.length > 0 || this.body.lastname.length > 0 || this.body.email.length > 0 || this.body.phone.length > 0){
+            console.log('entra')
             await this.fetchAddLanding(this.body)
         }
-        else this.errorloginMessage = 'Todos los campos son requeridos';
+        else if(this.body.firstname.length < 0 || this.body.lastname.length < 0 || this.body.email.length < 0 || this.body.phone.length < 0){
+            this.errorloginMessage = 'Todos los campos son requeridos';
+        }
     }
 
     @landingpage.Action(LandingMethods.actions.ADD_CONTACT)
