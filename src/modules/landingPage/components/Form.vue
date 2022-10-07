@@ -23,12 +23,22 @@
                 </div>
                 <div class="col-md-5">
                     <p class="input" required>Mail</p>
-                    <input v-model="body.email" type="text" />
+                    <input v-model="body.email" type="email" />
                 </div>
                 <div class="col-md-5">
                     <p class="input" required>Teléfono</p>
                     <input v-model="body.phone" type="text" />
                 </div>
+                <b-row align="center">
+                    <b-icon
+                        icon="exclamation-triangle"
+                        class="mx-3"
+                        style="margin-top: 25px"
+                    ></b-icon>
+                    <p class="error" style="font-size: 12px; text-align: center">
+                        {{ errorloginMessage }}
+                    </p>
+                </b-row>
                 <div class="pt-5 col-md-14">
                     <div class="col-md-5">
                         <b-button pill variant="primary" @click="EnviarDatos()">ENVIAR</b-button>
@@ -42,6 +52,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop, Watch } from 'vue-property-decorator';
+import { required} from 'vuelidate/lib/validators';
 // Store
 import { landingpage } from '../../../store/namespaces';
 import LandingMethods from '../../../store/LandingPage/methods/landingpage.methods';
@@ -52,6 +63,14 @@ import { landingPage } from '../interfaces/landingpage.interface';
 @Component({
     components: {
     },
+    validations: {
+        body:{
+            firstname: {required},
+            lastname: {required},
+            email: {required},
+            phone: {required}
+        }
+    }
 })
 export default class Forms extends Vue {
     body = {
@@ -60,6 +79,7 @@ export default class Forms extends Vue {
         email: '',
         phone: ''
     }
+    errorloginMessage: string = '';
 
     async mounted(){
         this.body
@@ -67,8 +87,10 @@ export default class Forms extends Vue {
     }
 
     async EnviarDatos(){
-        if(this.body.firstname == '' || this.body.lastname == '' || this.body.email == '')
-        await this.fetchAddLanding(this.body)
+        if(this.body.firstname.length > 0 || this.body.lastname.length > 0 || this.body.email.length > 0 || this.body.phone,length > 0){
+            await this.fetchAddLanding(this.body)
+        }
+        else this.errorloginMessage = 'Todos los campos son requeridos';
     }
 
     @landingpage.Action(LandingMethods.actions.ADD_CONTACT)
@@ -118,5 +140,10 @@ div.col-md-5{
 p.input{
     margin-right: 160px;
     font-weight: bold;
+}
+input:focus{
+    border-color: #d8ad3d;
+    box-shadow: #d8ad3d;
+    outline: 0 none;
 }
 </style>
