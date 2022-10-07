@@ -30,18 +30,14 @@
                     <input v-model="body.phone" type="text" />
                 </div>
                 <b-row align="center">
-                    <b-icon
-                        icon="exclamation-triangle"
-                        class="mx-3"
-                        style="margin-top: 25px"
-                    ></b-icon>
                     <p class="error" style="font-size: 12px; text-align: center">
                         {{ errorloginMessage }}
                     </p>
                 </b-row>
                 <div class="pt-5 col-md-14">
                     <div class="col-md-5">
-                        <b-button pill variant="primary" @click="EnviarDatos()">ENVIAR</b-button>
+                        <b-button v-if="body.firstname.length > 0 && body.lastname.length > 0 && body.email.length > 0 && body.phone.length > 0" pill variant="primary" @click="EnviarDatos()">ENVIAR</b-button>
+                        <b-button disabled v-else pill variant="primary" @click="EnviarDatos()">ENVIAR</b-button>
                     </div>
                 </div>
             </div>
