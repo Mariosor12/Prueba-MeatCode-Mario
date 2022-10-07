@@ -78,7 +78,8 @@ img.bodyForm {
 }
 h6 {
     margin-right: 120px;
-    margin-top: 10px;
+    margin-top: 20px;
+    font-family: 'Open Sans';
 }
 h6.mail {
     margin-right: 140px;
@@ -101,7 +102,7 @@ button.btn.btn-primary.rounded-pill{
 h1{
     font-family: 'Caveat', cursive;
 }
-h6{
-    font-family: 'Open Sans';
+div.col-md-5{
+    margin-top: 15px;
 }
 </style>

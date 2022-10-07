@@ -46,7 +46,7 @@
                                 >
                             </ul>
                             <b-card
-                                v-for="landing in filteredd"
+                                v-for="landing in landingpages"
                                 :title="landing.title"
                                 :img-src="landing.image"
                                 :img-alt="landing.title"
@@ -98,6 +98,7 @@ import Form from '../components/Form.vue';
 export default class LandingPages extends Vue {
     filtered: any[] = [];
     filters: any = {};
+    obj: any
 
     async mounted() {
         await this.landingPageAdded();
@@ -105,35 +106,39 @@ export default class LandingPages extends Vue {
 
     async landingPageAdded() {
         await this.fetchLanding();
+        this.obj = this.landingpages
+        console.log(this.obj)
     }
 
     async ObtenerCategoria(nombre: string) {
         if (nombre === 'Todos') {
             await this.fetchLanding();
+            this.obj = this.landingOnepages
+            this.landingpages = this.obj
         } else if (nombre === 'Productos') {
             await this.fetchOneCategory('Productos');
-            this.filtered = this.landingOnepages;
-            console.log(this.filtered);
+            this.obj = this.landingOnepages
+            this.landingpages = this.obj
+            console.log(this.obj);
         } else if (nombre === 'Recetas') {
             await this.fetchOneCategory('Recetas');
-            this.filtered = this.landingOnepages;
-            console.log(this.filtered);
+            this.obj = this.landingOnepages
+            this.landingpages = this.obj
+            console.log(this.obj);
         } else if (nombre === 'Consejos') {
             await this.fetchOneCategory('Consejos');
-            this.filtered = this.landingOnepages;
-            console.log(this.filtered);
+            this.obj = this.landingOnepages
+            this.landingpages = this.obj
+            console.log(this.obj);
         }
     }
 
-    get filteredd() {
-        this.filtered = this.landingpages.filter((item: any) => {
-            return Object.keys(this.filters).every((key) =>
-                String(item[key]?.toString().toLowerCase()).includes(
-                    this.filters[key]?.toLowerCase()
-                )
-            );
-        });
-        return this.filtered;
+    @Watch('landingpages')
+    onPropertyChanged(value: any, oldValue: any) {
+    this.landingpages = value
+    this.obj = value
+    this.landingpages = value
+    console.log(this.landingpages)
     }
 
     @landingpage.Action(LandingMethods.actions.FETCH_ALL_LANDINGPAGE)
@@ -184,5 +189,13 @@ ul {
 }
 h6{
     font-family: 'Open Sans';
+    color: black;
+}
+h6:hover{
+    font-family: 'Open Sans';
+    color: #d8ad3d;
+}
+a{
+    text-decoration: none !important;
 }
 </style>
